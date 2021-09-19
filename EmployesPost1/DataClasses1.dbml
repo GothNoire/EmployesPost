@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EmployeeDepartment" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-JLUQGV0;Initial Catalog=EmployeeDepartment;Integrated Security=True" SettingsObjectName="EmployesPost.Properties.Settings" SettingsPropertyName="EmployeeDepartmentConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employes_view" Member="Employes_view">
+    <Type Name="Employes_view">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Patronymic" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="id_post" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserModified" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="row_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employes" Member="Employes">
+    <Type Name="Employes">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Patronymic" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="id_post" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserModified" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Post_Employes" Member="Post" ThisKey="id_post" OtherKey="id" Type="Post" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Post" Member="Post">
+    <Type Name="Post">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserModified" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Post_Employes" Member="Employes" ThisKey="id" OtherKey="id_post" Type="Employes" />
+    </Type>
+  </Table>
+</Database>
